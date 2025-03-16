@@ -63,5 +63,8 @@ def getSpecificMonthRecords(date):
 
 
 if __name__ == "__main__":
-    db = Database("/app/db/budget.db")
+    # Docker
+    # db = Database("/app/db/budget.db")
+    
+    db = Database("budget.db")
     app.run(host = "0.0.0.0")
