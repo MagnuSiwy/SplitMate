@@ -63,8 +63,5 @@ def getSpecificMonthRecords(date):
 
 
 if __name__ == "__main__":
-    try:
-        db = Database("/app/budget.db")
-    except Exception as e:
-        db = Database("budget.db")
+    db = Database("/app/db/budget.db")
     app.run(host = "0.0.0.0")
