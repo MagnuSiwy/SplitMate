@@ -1,0 +1,203 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #1e2326;
+}
+
+table {
+    font-size: 20px;
+    width: fit-content;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: center;
+    border: 2px solid #a7c080;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+th, td {
+    width: fit-content;
+    padding: 8px;
+    background-color: #1e2326;
+    color: #d3c6aa;
+}
+
+th:not(:last-child), td:not(:last-child) {    
+    border-right: 1px solid #a7c080;
+}
+
+th {
+    border-bottom: 1px solid #a7c080;
+}
+
+td {
+    background-color: #3c4841;
+}
+
+input, select {
+    background-color: #3c4841;
+    border: 1px solid #a7c080;
+    border-radius: 5px;
+    color: #d3c6aa;
+    text-align: center;
+    min-width: 50px;
+    width: fit-content;
+    padding: 2px 10px;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #1e2326;
+    accent-color: #1e2326;
+    color: #d3c6aa;
+    border: 1px solid #a7c080;
+    border-radius: 2px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#header {
+    color: #d3c6aa;
+    padding: 20px;
+}
+
+#prop1, #prop2 {
+    min-width: 10px;
+    padding: 2px 3px;
+}
+
+#tableDiv {
+    width: 100%;
+    text-align: center;
+    margin: 20px auto;
+    margin-bottom: 100px;
+}
+
+#isShared {
+    background-color: #1e2326;
+}
+
+#addRowButton {
+    width: 10em;
+    height: 3em;
+    border: 2px solid #a7c080;
+    border-radius: 20px;
+    background-color: #1e2326;
+    color: #d3c6aa;
+    margin: 20px auto 0 auto;
+}
+
+#addRowButton:hover {
+    background-color: #3c4841;
+}
+
+#addRowButton:active {
+    background-color: #1e2326;
+}
+
+#errorDiv {
+    margin: 10px auto;
+}
+
+.errorMessage {
+    display: none;
+    font-size: 11px;
+    margin: 0 auto;
+    color: #e67e80;
+}
+
+#dbDiv {
+    color: #d3c6aa;
+    text-align: center;
+    width: 100%;
+}
+
+#balanceDiv {
+    width: 100%;
+    height: fit-content;
+    margin: 5px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.balance {
+    margin: auto 40px
+}
+
+#summaryTable {
+    font-size: 16px;
+}
+
+#summaryTable th, #summaryTable td {
+    width: 4em;
+}
+
+#monthDiv {
+    margin: auto;
+    height: fit-content;
+    width: 100%;
+}
+
+#filler {
+    width: 50%;
+}
+
+#monthPicker {
+    float: right;
+    width: 9em;
+    padding: 2px 0.5em;
+    margin-right: 12.2em;
+    margin-bottom: 5px;
+    border: 2px solid #a7c080;
+    border-radius: 10px;
+}
+
+#recordsTable {
+    font-size: 12px;
+    width: 50em;
+}
+
+#idButton {
+    border: none;
+    border-radius: 5px;
+    width: 2em;
+    padding: 2px 5px;
+    background-color: #3c4841;
+    color: #d3c6aa;
+}
+
+#idButton:hover {
+    background-color: #e67e80;
+    color: #1e2326;
+    content: "ADD";
+}
+
+#idButton:active {
+    background-color: #3c4841;
+}
+
+#delRecordIcon {
+    display: none;
+}
+
+#record:hover td {
+    background-color: #1e2326;
+}
+
+#record:hover #recordID {
+    display: none;
+}
+
+#record:hover #delRecordIcon {
+    display: inline;
+}

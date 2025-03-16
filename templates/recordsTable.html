@@ -1,0 +1,35 @@
+<table id="recordsTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th> 
+            <th>Category</th>
+            <th>Patrycja paid</th>
+            <th>Kacper paid</th>
+            <th>Patrycja's share</th>
+            <th>Kacper's share</th>       
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+        <tr id="record">
+            <td>
+                <button id="idButton" record-id="{{ record.id }}">
+                    <span id="recordID">{{ record.id }}</span>
+                    <i id="delRecordIcon" class="fa-solid fa-trash-can"></i>
+                </button>
+            </td>
+            <td>{{ record.date }}</td>
+            <td>{{ record.category }}</td>
+            <td>{{ record.amount1 }}</td>
+            <td>{{ record.amount2 }}</td>
+            <td>{{ record.share1 }}</td>
+            <td>{{ record.share2 }}</td>
+        </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">No records found</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

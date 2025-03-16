@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Calculator</title>
+    <script src="https://kit.fontawesome.com/699f1b1f2d.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+<body>
+    <div id="header">
+        <h1>Bubs' Calculator</h1>
+    </div>
+    <div id="tableDiv">
+        <form id="budgetForm" action="" method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Patrycja</th>
+                        <th>Kacper</th>
+                        <th>Date</th>
+                        <th>Shared</th>
+                        <th>Proportion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select id="categorySelect" name="category">
+                                <option value="Food">Food</option>
+                                <option value="Clothes">Clothes</option>
+                                <option value="Cosmetics">Cosmetics</option>
+                                <option value="Fun">Fun</option>
+                                <option value="Travel">Travel</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </td>
+                        <td><input id="amount1" name="amount1" type="number" min="-5000" max="5000" step="0.01" placeholder="Amount"></td>
+                        <td><input id="amount2" name="amount2" type="number" min="-5000" max="5000" step= "0.01" placeholder="Amount"></td>
+                        <td><input id="datePicker" name="date" type="date"></td>
+                        <td><input id="isShared" name="isShared" type="checkbox" checked></td>
+                        <td>
+                            <input id="prop1" name="prop1" type="number" placeholder="1" min="1" max="999" value="3">
+                            : 
+                            <input id="prop2" name="prop2" type="number" placeholder="1" min="1" max="999" value="5">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button id="addRowButton" type="submit">Add Row</button>
+        </form>
+        <div id="errorDiv">
+            <span class="errorMessage" id="amountError">Error</span>
+            <span class="errorMessage" id="propError">Error</span>
+        </div>
+    </div>
+
+    <div id="dbDiv">
+        <div id="balanceDiv">
+            <h3 class="balance">Balance summary - Who Owes Who?</h2>
+            {% include 'summaryTable.html' %}
+        </div>
+        <div id="monthDiv">
+            <div id="filler">
+                <input id="monthPicker" type="date" name="date">
+            </div>
+            <div id="filler"></div>
+        </div>
+        {% include 'recordsTable.html' %}
+    </div>
+</body>
+</html>
