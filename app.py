@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from Database import Database
 from datetime import datetime as dt
+import os
 
 app = Flask(__name__)
 
@@ -62,5 +63,8 @@ def getSpecificMonthRecords(date):
 
 
 if __name__ == "__main__":
-    db = Database("budget.db")
+    try:
+        db = Database("/app/budget.db")
+    except Exception as e:
+        db = Database("budget.db")
     app.run(host = "0.0.0.0")
