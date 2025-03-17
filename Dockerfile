@@ -6,7 +6,7 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENV IS_INSIDE_DOCKER 1
+ENV IS_INSIDE_DOCKER=1
 
 EXPOSE 2306
 
