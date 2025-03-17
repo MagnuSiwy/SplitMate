@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     const amountError = document.getElementById("amountError"),
         propError = document.getElementById("propError"),
-        month = document.getElementById("monthPicker"),
+        dateError = document.getElementById("dateError"),
+        datePicker = document.getElementById("datePicker"),
+        monthPicker = document.getElementById("monthPicker"),
         category = document.getElementById("categorySelect"),
         prop1 = document.getElementById("prop1"),
         prop2 = document.getElementById("prop2"),
@@ -19,9 +21,17 @@ document.addEventListener("DOMContentLoaded", function() {
         field.style.display = "none";
     }
 
+    function isEmpty(field) {
+        if(!field.value) {
+            return true;
+        }
+
+        return false;
+    }
+
     function validateProp(field) {
         if(sharedBox.checked) {
-            if(!(prop1.value && prop2.value)) {
+            if(isEmpty(prop1) || isEmpty(prop2)) {
                 showError(propError, "At least one of the PROPORTION fields should be used with a numerical values");
                 return false;
             }
@@ -37,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function validateAmount(field) {
-        if(!(amount1.value || amount2.value)) {
+        if(isEmpty(amount1) && isEmpty(amount2)) {
             showError(amountError, "At least one of the AMOUNT fields should be used with a numerical value");
             return false;
         }
@@ -48,6 +58,15 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         
         clearError(amountError);
+        return true;
+    }
+
+    function validateDate(field) {
+        if(isEmpty(field)) {
+            showError(dateError, "Date field should not be empty")
+            return false;
+        }
+
         return true;
     }
 
@@ -68,6 +87,8 @@ document.addEventListener("DOMContentLoaded", function() {
             prop1.value = 1;
             prop2.value = 1;
         }
+
+        [prop1, prop2].forEach(validateProp);
     });
 
     [amount1, amount2].forEach(field => {
@@ -91,11 +112,16 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    datePicker.addEventListener("change", function() {
+        validateDate(datePicker);
+    });
+
     form.addEventListener("submit", function(event) {
         if(!(validateAmount(amount1) &&
         validateAmount(amount2) &&
         validateProp(prop1) &&
-        validateProp(prop2))) {
+        validateProp(prop2) &&
+        validateDate(datePicker))) {
             event.preventDefault();
         }
     });
@@ -116,12 +142,22 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    document.getElementById("monthPicker").addEventListener("change", function() {
-        window.location.href = `/month/${this.value}`;
+    monthPicker.addEventListener("change", function() {
+        if(!isEmpty(this)) {
+            window.location.href = `/month/${this.value}`;
+        }
     });
 });
 
 window.onload = function() {
     let today = new Date().toISOString().split('T')[0];
+    let chosenDate = window.location.search.slice(-10);
+    
     document.getElementById("datePicker").value = today;
+    if(chosenDate) {
+        document.getElementById("monthPicker").value = window.location.search.slice(-10);
+    }
+    else {
+        document.getElementById("monthPicker").value = today;
+    }
 };

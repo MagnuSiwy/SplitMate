@@ -97,6 +97,10 @@ input[type=number] {
     margin-bottom: 100px;
 }
 
+#budgetForm {
+    margin-bottom: 10px;
+}
+
 #isShared {
     background-color: #1e2326;
 }
@@ -117,10 +121,6 @@ input[type=number] {
 
 #addRowButton:active {
     background-color: #1e2326;
-}
-
-#errorDiv {
-    margin: 10px auto;
 }
 
 .errorMessage {
