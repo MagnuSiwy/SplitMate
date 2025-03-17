@@ -9,8 +9,11 @@
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     </head>
 <body>
-    <div id="header">
-        <h1>Bubs' Calculator</h1>
+    <div id="headerDiv">
+        <div class="filler">
+            <h1 id="appHeader">Bubs' Calculator</h1>
+        </div>
+        <div class="filler"></div>
     </div>
     <div id="tableDiv">
         <form id="budgetForm" action="" method="post">
@@ -59,14 +62,14 @@
 
     <div id="dbDiv">
         <div id="balanceDiv">
-            <h3 class="balance">Balance summary - Who Owes Who?</h2>
+            <h2 class="balance">Balance summary - Who Owes Who?</h2>
             {% include 'summaryTable.html' %}
         </div>
         <div id="monthDiv">
-            <div id="filler">
+            <div class="filler">
                 <input id="monthPicker" type="date" name="date">
             </div>
-            <div id="filler"></div>
+            <div class="filler"></div>
         </div>
         <div id="recordsDiv">
             {% include 'recordsTable.html' %}

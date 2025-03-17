@@ -2,6 +2,7 @@ body {
     font-family: Roboto, sans-serif;
     margin: 20px;
     background-color: #1e2326;
+    width: 100%;
 }
 
 table {
@@ -66,9 +67,22 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-#header {
+#headerDiv {
     color: #d3c6aa;
-    padding: 20px;
+    padding: 10px;
+    width: 100%;
+    height: 5em;
+}
+
+#appHeader {
+    float: right;
+    margin-right: 6.5em;
+}
+
+.filler {
+    width: 50%;
+    height: 100%;
+    float: left;
 }
 
 #prop1, #prop2 {
@@ -124,7 +138,7 @@ input[type=number] {
 
 #balanceDiv {
     width: 100%;
-    height: fit-content;
+    height: 5em;
     margin: 5px auto;
     display: flex;
     justify-content: center;
@@ -144,13 +158,8 @@ input[type=number] {
 
 #monthDiv {
     margin: auto;
-    min-height: 2em;
-    height: fit-content;
+    height: 2em;
     width: 100%;
-}
-
-#filler {
-    width: 50%;
 }
 
 #monthPicker {
