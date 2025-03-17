@@ -1,2 +1,11 @@
-__pycache__/
-budget.db
+# Created by venv; see https://docs.python.org/3/library/venv.html
+*
+
+!.gitignore
+!app.py
+!Database.py
+!Dockerfile
+!README.md
+!requirements.txt
+!static/
+!templates/
