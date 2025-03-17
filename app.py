@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from Database import Database
 from datetime import datetime as dt
+import os
 
 app = Flask(__name__)
 
@@ -61,8 +62,8 @@ def getSpecificMonthRecords(date):
 
 
 if __name__ == "__main__":
-    # Docker
-    # db = Database("/app/db/budget.db")
-    
-    db = Database("budget.db")
+    if "IS_INSIDE_DOCKER" in os.environ.keys():
+        db = Database("/app/db/budget.db")
+    else:
+        db = Database("budget.db")
     app.run(host = "0.0.0.0", port=2306)
