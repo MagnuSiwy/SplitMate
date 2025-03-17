@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from Database import Database
 from datetime import datetime as dt
-import os
 
 app = Flask(__name__)
 
@@ -45,7 +44,6 @@ def main():
     year, month = str(dt.now().year), str(dt.now().month)
     if date:
         year, month, _ = date.split("-")
-        print(year, month)
 
     return render_template("index.html", **db.getMonthlyRecords(year, month))
 
@@ -67,4 +65,4 @@ if __name__ == "__main__":
     # db = Database("/app/db/budget.db")
     
     db = Database("budget.db")
-    app.run(host = "0.0.0.0")
+    app.run(host = "0.0.0.0", port=2306)
