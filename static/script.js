@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         [prop1, prop2].forEach(validateProp);
+        [amount1, amount2].forEach(validateAmount);
     });
 
     [amount1, amount2].forEach(field => {

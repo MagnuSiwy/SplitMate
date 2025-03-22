@@ -73,6 +73,7 @@ class Database:
                 amount2,
                 share1,
                 share2,
+                is_shared,
                 date
                 FROM expenses
             WHERE strftime('%Y-%m', date)=?
@@ -88,17 +89,46 @@ class Database:
              "amount2": row[3], 
              "share1": row[4], 
              "share2": row[5],
-             "date": row[6]}
+             "is_shared": row[6],
+             "date": row[7]}
             for row in dbRecords
         ]
 
-        user1 = sum(float(row["share1"] - row["amount1"]) if float(row["share1"] - row["amount1"]) > 0 else 0 for row in records)
-        user2 = sum(float(row["share2"] - row["amount2"]) if float(row["share2"] - row["amount2"]) > 0 else 0 for row in records)
-        balance = {
-            "user1": max(user1 - user2, 0),
-            "user2": max(user2 - user1, 0)
-        } 
-
         records.sort(key = lambda x: x["date"], reverse = True)
 
-        return {"records": records, "balance": balance}
+        user1_balance = sum(float(row["share1"] - row["amount1"]) if float(row["share1"] - row["amount1"]) > 0 else 0 for row in records)
+        user2_balance = sum(float(row["share2"] - row["amount2"]) if float(row["share2"] - row["amount2"]) > 0 else 0 for row in records)
+        user1_balance -= user2_balance
+        user2_balance = -user1_balance
+        balance = {
+            "user1": max(user1_balance, 0),
+            "user2": max(user2_balance, 0)
+        } 
+
+        summary = {}
+        user1_summary = sum(float(row["amount1"]) for row in records) + user1_balance
+        user2_summary = sum(float(row["amount2"]) for row in records) + user2_balance
+
+        if user1_summary:
+            summary["user1"] = {
+                "overall": user1_summary,
+                "food": sum(float(row["share1"]) if row["category"] == "Food" else 0.0 for row in records),
+                "clothes": sum(float(row["share1"]) if row["category"] == "Clothes" else 0.0 for row in records),
+                "cosmetics": sum(float(row["share1"]) if row["category"] == "Cosmetics" else 0.0 for row in records),
+                "fun": sum(float(row["share1"]) if row["category"] == "Fun" else 0.0 for row in records),
+                "travel": sum(float(row["share1"]) if row["category"] == "Travel" else 0.0 for row in records),
+                "others": sum(float(row["share1"]) if row["category"] == "Others" else 0.0 for row in records)
+            }
+
+        if user2_summary:
+            summary["user2"] = {
+                "overall": user2_summary,
+                "food": sum(float(row["share2"]) if row["category"] == "Food" else 0.0 for row in records),
+                "clothes": sum(float(row["share2"]) if row["category"] == "Clothes" else 0.0 for row in records),
+                "cosmetics": sum(float(row["share2"]) if row["category"] == "Cosmetics" else 0.0 for row in records),
+                "fun": sum(float(row["share2"]) if row["category"] == "Fun" else 0.0 for row in records),
+                "travel": sum(float(row["share2"]) if row["category"] == "Travel" else 0.0 for row in records),
+                "others": sum(float(row["share2"]) if row["category"] == "Others" else 0.0 for row in records)
+            }
+
+        return {"records": records, "balance": balance, "summary": summary}

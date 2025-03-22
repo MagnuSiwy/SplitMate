@@ -4,6 +4,8 @@ from datetime import datetime as dt
 import os
 
 app = Flask(__name__)
+DB_PATH = "/app/db/budget.db" if "IS_INSIDE_DOCKER" in os.environ.keys() else "budget.db"
+db = Database(DB_PATH)
 
 @app.route("/", methods=["GET", "POST"])
 def main():
@@ -25,17 +27,14 @@ def main():
         if is_shared:
             share1 = round((amount1 + amount2) * (prop1 / (prop1 + prop2)), 2)
             share2 = round((amount1 + amount2) * (prop2 / (prop1 + prop2)), 2)
-        elif amount1 < 0:
+        elif amount1 < 0 or amount2 < 0:
             amount1 = abs(amount1)
-            share1 = 0
-            share2 = amount1
-        elif amount2 < 0:
             amount2 = abs(amount2)
             share1 = amount2
-            share2 = 0
+            share2 = amount1
         else:
-            share1 = 0
-            share2 = 0
+            share1 = amount1
+            share2 = amount2
 
         db.addRecord(category, amount1, amount2, share1, share2, date, is_shared, prop1, prop2)
 
@@ -62,8 +61,4 @@ def getSpecificMonthRecords(date):
 
 
 if __name__ == "__main__":
-    if "IS_INSIDE_DOCKER" in os.environ.keys():
-        db = Database("/app/db/budget.db")
-    else:
-        db = Database("budget.db")
     app.run(host = "0.0.0.0", port=2306)

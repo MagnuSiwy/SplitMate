@@ -136,24 +136,26 @@ input[type=number] {
     width: 100%;
 }
 
-#balanceDiv {
-    width: 100%;
-    height: 5em;
-    margin: 5px auto;
-    display: flex;
-    justify-content: center;
-}
-
-.balance {
-    margin: auto 40px
-}
-
 #summaryTable {
-    font-size: 16px;
+    margin-bottom: 50px;
+    font-size: 14px;
 }
 
 #summaryTable th, #summaryTable td {
     width: 4em;
+}
+
+#balanceDiv {
+    width: 100%;
+    margin: 5px auto;
+}
+
+#balance {
+    /* color: #e67e80; */
+    background-color: #3c4841;
+    border: 2px solid #a7c080;
+    border-radius: 10px;
+    padding: 4px 8px;
 }
 
 #monthDiv {

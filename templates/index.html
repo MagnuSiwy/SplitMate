@@ -62,9 +62,12 @@
     </div>
 
     <div id="dbDiv">
-        <div id="balanceDiv">
-            <h2 class="balance">Balance summary - Who Owes Who?</h2>
+        <div id="summaryDiv">
+            <h2 class="summary">Here is the summary of your spendings</h2>
             {% include 'summaryTable.html' %}
+        </div>
+        <div id="balanceDiv">
+            {% include 'balance.html' %}
         </div>
         <div id="monthDiv">
             <div class="filler">

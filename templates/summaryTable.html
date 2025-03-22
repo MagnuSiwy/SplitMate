@@ -1,14 +1,29 @@
-<table id="summaryTable" class="balance">
+{% for user in summary: %}
+<h3>{{ "Patrycja" if user == "user1" else "Kacper" }}</h2>
+<table id="summaryTable" class="summary">
     <thead>
         <tr>
-            <th>Patrycja</th>
-            <th>Kacper</th>
+            <th>Food</th>
+            <th>Clothes</th>
+            <th>Cosmetics</th>
+            <th>Fun</th>
+            <th>Travel</th>
+            <th>Others</th>
+            <th>Total</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>{{ balance.user1 }}</td>
-            <td>{{ balance.user2 }}</td>
+            <td>{{ summary[user].food }}</td>
+            <td>{{ summary[user].clothes }}</td>
+            <td>{{ summary[user].cosmetics }}</td>
+            <td>{{ summary[user].fun }}</td>
+            <td>{{ summary[user].travel }}</td>
+            <td>{{ summary[user].others }}</td>
+            <td>{{ summary[user].overall }}</td>
         </tr>
     </tbody>
 </table>
+{% else %}
+
+{% endfor %}
