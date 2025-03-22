@@ -112,23 +112,23 @@ class Database:
         if user1_summary:
             summary["user1"] = {
                 "overall": user1_summary,
-                "food": sum(float(row["share1"]) if row["category"] == "Food" else 0.0 for row in records),
-                "clothes": sum(float(row["share1"]) if row["category"] == "Clothes" else 0.0 for row in records),
-                "cosmetics": sum(float(row["share1"]) if row["category"] == "Cosmetics" else 0.0 for row in records),
-                "fun": sum(float(row["share1"]) if row["category"] == "Fun" else 0.0 for row in records),
-                "travel": sum(float(row["share1"]) if row["category"] == "Travel" else 0.0 for row in records),
-                "others": sum(float(row["share1"]) if row["category"] == "Others" else 0.0 for row in records)
+                "food": round(sum(float(row["share1"]) if row["category"] == "Food" else 0.0 for row in records), 2),
+                "clothes": round(sum(float(row["share1"]) if row["category"] == "Clothes" else 0.0 for row in records), 2),
+                "cosmetics": round(sum(float(row["share1"]) if row["category"] == "Cosmetics" else 0.0 for row in records), 2),
+                "fun": round(sum(float(row["share1"]) if row["category"] == "Fun" else 0.0 for row in records), 2),
+                "travel": round(sum(float(row["share1"]) if row["category"] == "Travel" else 0.0 for row in records), 2),
+                "others": round(sum(float(row["share1"]) if row["category"] == "Others" else 0.0 for row in records), 2)
             }
 
         if user2_summary:
             summary["user2"] = {
                 "overall": user2_summary,
-                "food": sum(float(row["share2"]) if row["category"] == "Food" else 0.0 for row in records),
-                "clothes": sum(float(row["share2"]) if row["category"] == "Clothes" else 0.0 for row in records),
-                "cosmetics": sum(float(row["share2"]) if row["category"] == "Cosmetics" else 0.0 for row in records),
-                "fun": sum(float(row["share2"]) if row["category"] == "Fun" else 0.0 for row in records),
-                "travel": sum(float(row["share2"]) if row["category"] == "Travel" else 0.0 for row in records),
-                "others": sum(float(row["share2"]) if row["category"] == "Others" else 0.0 for row in records)
+                "food": round(sum(float(row["share2"]) if row["category"] == "Food" else 0.0 for row in records), 2),
+                "clothes": round(sum(float(row["share2"]) if row["category"] == "Clothes" else 0.0 for row in records), 2),
+                "cosmetics": round(sum(float(row["share2"]) if row["category"] == "Cosmetics" else 0.0 for row in records), 2),
+                "fun": round(sum(float(row["share2"]) if row["category"] == "Fun" else 0.0 for row in records), 2),
+                "travel": round(sum(float(row["share2"]) if row["category"] == "Travel" else 0.0 for row in records), 2),
+                "others": round(sum(float(row["share2"]) if row["category"] == "Others" else 0.0 for row in records), 2)
             }
 
         return {"records": records, "balance": balance, "summary": summary}
