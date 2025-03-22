@@ -151,10 +151,9 @@ input[type=number] {
 }
 
 #balance {
-    /* color: #e67e80; */
     background-color: #3c4841;
     border: 2px solid #a7c080;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 4px 8px;
 }
 

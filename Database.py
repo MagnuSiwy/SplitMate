@@ -106,8 +106,8 @@ class Database:
         } 
 
         summary = {}
-        user1_summary = sum(float(row["amount1"]) for row in records) + user1_balance
-        user2_summary = sum(float(row["amount2"]) for row in records) + user2_balance
+        user1_summary = round(sum(float(row["amount1"]) for row in records) + user1_balance, 2)
+        user2_summary = round(sum(float(row["amount2"]) for row in records) + user2_balance, 2)
 
         if user1_summary:
             summary["user1"] = {
