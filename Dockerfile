@@ -6,6 +6,8 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN mkdir /app/db
+
 ENV IS_INSIDE_DOCKER=1
 
 EXPOSE 2306
