@@ -101,8 +101,8 @@ class Database:
         user1_balance -= user2_balance
         user2_balance = -user1_balance
         balance = {
-            "user1": max(user1_balance, 0),
-            "user2": max(user2_balance, 0)
+            "user1": max(round(user1_balance, 2), 0),
+            "user2": max(round(user2_balance, 2), 0)
         } 
 
         summary = {}

@@ -19,8 +19,8 @@ def main():
         prop2 = request.form.get("prop2") or "0"
 
         is_shared = True if is_shared == "on" else False
-        amount1 = float(amount1)
-        amount2 = float(amount2)
+        amount1 = round(float(amount1), 2)
+        amount2 = round(float(amount2), 2)
         prop1 = int(prop1)
         prop2 = int(prop2)  
 
