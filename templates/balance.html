@@ -1,0 +1,9 @@
+{% if balance.user1 > 0: %}
+    <h3>This month Patrycja owes Kacper <span id="balance">{{ balance.user1 }} EUR</span></h3>
+{% elif balance.user2 > 0: %}
+    <h3>This month Kacper owes Patrycja <u id="balance">{{ balance.user2 }} EUR</u></h3>
+{% elif balance.user1 == 0 and balance.user2 == 0: %}
+
+{% else: %}
+    <h3>You are square!</h3>
+{% endif %}

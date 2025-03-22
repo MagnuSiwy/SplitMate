@@ -9,3 +9,5 @@
 !requirements.txt
 !static/
 !templates/
+!static/*
+!templates/*
