@@ -10,4 +10,4 @@ ENV IS_INSIDE_DOCKER=1
 
 EXPOSE 2306
 
-CMD ["python", "/app/app.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:2306", "app:app"]
